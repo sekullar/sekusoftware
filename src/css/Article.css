@@ -1,0 +1,22 @@
+.h-screen-spec{
+    height: calc(100vh - 114px);
+}
+
+.downArrowAni{
+    animation-name: downArrow;
+    animation-timing-function: ease;
+    animation-direction: alternate-reverse;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+@keyframes downArrow {
+    from{
+        transform: translateY(0);
+    }
+
+    to{
+        transform: translateY(15px);
+    }
+}

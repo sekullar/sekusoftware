@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import SekuLogo from "../../images/logo3.svg";
 import { useCookies } from "react-cookie";
+import { LanguageContext } from "./Context/LanguageContext";
+import Night from "../../images/night.svg"
+import Sunny from "../../images/sunny.svg"
 
 const Header = () => {
   const [cookies, setCookie] = useCookies(["darkMode"]);
   const [isDarkMode, setIsDarkMode] = useState(cookies.darkMode === "true"); 
+  const {language} = useContext(LanguageContext);
 
   const toggleTheme = () => {
     const newMode = !isDarkMode; 
@@ -33,21 +37,25 @@ const Header = () => {
         <div className="flex items-center gap-3">
           <img
             src={SekuLogo}
-            className="w-[100px] drop-shadow-lg"
+            className="w-[70px] drop-shadow-lg"
             alt="Seku Software Logo"
           />
           <p className="roboto-light text-3xl">Seku Software</p>
         </div>
         <div className="flex items-center">
-          <div className="theme-toggle">
+          <div className="theme-toggle me-3">
+            <img src={Sunny} className={`w-[25px] ${cookies.darkMode == true ? "invert" : ""} me-3`} alt="Sunny svg" />
             <div
               className={`toggle-switch ${cookies.darkMode ? "dark" : "light"}`}
               onClick={toggleTheme}
             >
               <div className="toggle-circle"></div>
             </div>
+            <img src={Night} className={`w-[25px] ${cookies.darkMode == true ? "invert" : ""} ms-2`} alt="Night svg" />
           </div>
-        </div>
+          <button className="transition-all duration-300 px-4 py-2 rounded-lg text-white roboto-light bg-sky-600 roboto-regular text-lg cursor-pointer">{language == "en" ? "Order Now" : "Sipariş ver"}</button>
+
+         </div>
       </div>
     </>
   );

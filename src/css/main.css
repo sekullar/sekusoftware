@@ -5,25 +5,25 @@
 body.light-mode {
   background-color: #f0f0f0;
   color: #333;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  /* transition: background-color 0.3s ease, color 0.3s ease; */
 }
 
 body.dark-mode {
   background-color: #1e1e1e;
   color: #f9f9f9;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  /* transition: background-color 0.3s ease, color 0.3s ease; */
 }
 
 .header.light-mode {
   background-color: #f0f0f0;
   color: #333;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  /* transition: background-color 0.3s ease, color 0.3s ease; */
 }
 
 .header.dark-mode {
   background-color: #1e1e1e;
   color: #f9f9f9;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  /* transition: background-color 0.3s ease, color 0.3s ease; */
 }
 
 .theme-toggle {
@@ -134,5 +134,32 @@ body.dark-mode {
     font-family: "Roboto", serif;
     font-weight: 900;
     font-style: italic;
+  }
+
+  
+
+  .inter-400{
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .inter-500{
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .inter-600{
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  .bg-special-blue-1{
+    
   }
   

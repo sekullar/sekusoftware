@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import SekuLogo from "../../images/logo3.svg";
+import SekuLogo from "../../../images/logo3.svg";
 import { useCookies } from "react-cookie";
-import { LanguageContext } from "./Context/LanguageContext";
-import Night from "../../images/night.svg"
-import Sunny from "../../images/sunny.svg"
+import { LanguageContext } from "../Context/LanguageContext";
+import Night from "../../../images/night.svg"
+import Sunny from "../../../images/sunny.svg"
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [cookies, setCookie] = useCookies(["darkMode"]);
@@ -15,6 +16,8 @@ const Header = () => {
     setIsDarkMode(newMode); 
     setCookie("darkMode", newMode, { path: "/", maxAge: 3600 }); 
   };
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.className = cookies.darkMode ? "dark-mode" : "light-mode";
@@ -33,8 +36,8 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between bg-white p-5 header">
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between bg-white p-5 header select-none">
+        <div className="flex items-center gap-3" onClick={() => navigate("/home")}>
           <img
             src={SekuLogo}
             className="w-[70px] drop-shadow-lg"
@@ -53,7 +56,7 @@ const Header = () => {
             </div>
             <img src={Night} className={`w-[25px] ${cookies.darkMode == true ? "invert" : ""} ms-2`} alt="Night svg" />
           </div>
-          <button className="transition-all duration-300 px-4 py-2 rounded-lg text-white roboto-light bg-sky-600 roboto-regular text-lg cursor-pointer">{language == "en" ? "Order Now" : "Sipariş ver"}</button>
+          <button className="transition-all duration-300 px-4 py-2 rounded-lg text-white roboto-light bg-sky-600 roboto-regular text-lg cursor-pointer outline-0" onClick={() => navigate("/OrderNow")}>{language == "en" ? "Order Now" : "Sipariş ver"}</button>
 
          </div>
       </div>

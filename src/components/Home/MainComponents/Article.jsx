@@ -4,23 +4,29 @@ import DownArrow from "../../../images/downArrow.svg"
 import "../../../css/Article.css"
 import { LanguageContext } from "../Context/LanguageContext";
 import { useContext } from "react";
+import t1 from "../../../images/t1.png"
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Article = () => {
 
-    const images = [mainPhoto,mainPhoto,mainPhoto,mainPhoto]
+    const images = [t1,t1,t1,t1,t1,t1,t1,t1,t1]
 
     const {language} = useContext(LanguageContext)
+    const [cookies, setCookie] = useCookies(["darkMode"]);
+
+    const navigate = useNavigate();
 
     return(
         <>
-            <div className="flex justify-center w-full absolute bottom-0 mb-12">
+            <a href="#whyUs" className="flex justify-center w-full absolute bottom-0 mb-12 select-none">
                 <img src={DownArrow} className="w-[50px] downArrowAni"  alt="" />
-            </div>
-            <div className="flex w-full flex-col h-screen-spec items-top overflow-hidden">
+            </a>
+            <div className="flex w-full flex-col h-screen-spec items-top overflow-hidden select-none">
                 <div  className="w-full" style={{overflow: "hidden", position: "relative"}}>
                     <Marquee gradient={false} speed={50}>
                         {images.map((src, index) => (
-                        <img key={index} src={src} alt={`Image ${index + 1}`} className="h-[300px]"/>
+                        <img key={index} src={src} alt={`Image ${index + 1}`} className={`h-[300px] ${cookies.darkMode ? "invert" : ""}`}/>
                         ))}
                     </Marquee>
                 </div>
@@ -40,8 +46,8 @@ const Article = () => {
                     </div>
                 </>}
                 <div className="flex items-center justify-center gap-3 mt-12">
-                    <button className="outline-0 bg-sky-500 hover:bg-sky-600 transition-all duration-300 text-white inter-500 px-4 py-2 rounded-lg w-[150px] text-xl">{language == "en" ? "Order Now" : "Sipariş Ver"}</button>
-                    <button className="outline-0 bg-sky-500 hover:bg-sky-600 transition-all duration-300 text-white inter-500 px-4 py-2 rounded-lg w-[150px] text-xl">{language == "en" ? "Get Information" : "Bilgi al"}</button>
+                    <button className="outline-0 bg-sky-500 hover:bg-sky-600 transition-all duration-300 text-white inter-500 px-4 py-2 rounded-lg w-[150px] text-xl" onClick={() => navigate("/OrderNow")}>{language == "en" ? "Order Now" : "Sipariş Ver"}</button>
+                    <a href="#GetInfo" className="outline-0 bg-sky-500 hover:bg-sky-600 transition-all duration-300 text-white inter-500 px-4 py-2 rounded-lg w-[150px] text-xl text-center">{language == "en" ? "Get Information" : "Bilgi al"}</a>
                 </div>
             </div>
         </>

@@ -1,0 +1,82 @@
+.downAni2{
+    animation-name: downAni2;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-direction: alternate;
+}
+
+@keyframes downAni2 {
+    from{
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.lateAni1{
+    animation-name: lateAni1;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-direction: alternate;
+    animation-fill-mode: backwards;
+    animation-delay: 0.7s;
+}
+
+@keyframes lateAni1 {
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+
+.bg-gradient-special {
+    background: linear-gradient(90deg, #f8f9fa, #dbeafe);
+    background-size: 200% 200%;
+    transition: background-position 0.5s ease-in-out;
+}
+
+.bg-gradient-special-2{
+    background: linear-gradient(45deg, rgba(61, 4, 99, 0.8), rgba(231, 195, 255, 0.8));
+    border-radius: 10px;  /* Kenarları yuvarlatmak için */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);  /* Hafif gölge efekti */
+    background-size: 200% 200%;
+    transition: background-position 0.5s ease-in-out;
+}
+
+.bg-gradient-special:hover {
+    background-position: right bottom;
+}
+
+.bg-gradient-special-2:hover {
+    background-position: right bottom;
+    border-color: #dbeafe;
+}
+
+.animated-text{
+    -webkit-text-fill-color: #0000;
+    animation: gradient-animation 4s infinite, mainLabel 1s ease alternate;
+    background: linear-gradient(90deg, #f9d423, #ffb347, #f6e58d, #f9d423);
+    -webkit-background-clip: text;
+    background-size: 300%;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    to {
+        background-position: 0 50%
+    }
+}

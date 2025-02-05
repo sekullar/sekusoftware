@@ -1,0 +1,19 @@
+.accordion{
+    max-width: 650px;
+}
+
+.dark-mode .accordion .accordion__item .accordion__button{
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.light-mode .accordion .accordion__item .accordion__button{
+    background-color: #fff;
+}
+
+
+.dark-mode .accordion{
+    border-color: #fff;
+    border-radius: 16px;
+    padding: 5px;
+}

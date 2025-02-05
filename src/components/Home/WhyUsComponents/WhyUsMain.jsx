@@ -13,7 +13,7 @@ const WhyUsMain = () => {
 
     return(
         <>
-            <div className="mt-24">
+            <div className="pt-24 select-none" id="whyUs">
                 <p className="inter-600 text-5xl ms-12 text-center">Neden mi <span className="roboto-light">Seku Software</span>?</p>
                 <div className="flex justify-around mt-20 gap-12">
                     <img src={mainPhoto4} loading="lazy" alt="Some Software Icons" />

@@ -1,0 +1,21 @@
+.animated-text-blue{
+    -webkit-text-fill-color: #0000;
+    animation: gradient-animation 4s infinite, mainLabel 1s ease alternate;
+    background: linear-gradient(90deg, #91ccff, #a0d9f9, #4ab7fa, #97ceff);
+    -webkit-background-clip: text;
+    background-size: 300%;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    to {
+        background-position: 0 50%
+    }
+}

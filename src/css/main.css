@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  scroll-behavior: smooth;
+}
+
 body.light-mode {
-  background-color: #f0f0f0;
+  background-color: #fff;
   color: #333;
   /* transition: background-color 0.3s ease, color 0.3s ease; */
 }
@@ -15,7 +19,7 @@ body.dark-mode {
 }
 
 .header.light-mode {
-  background-color: #f0f0f0;
+  background-color: #ffff;
   color: #333;
   /* transition: background-color 0.3s ease, color 0.3s ease; */
 }
@@ -159,7 +163,5 @@ body.dark-mode {
     font-style: normal;
   }
 
-  .bg-special-blue-1{
-    
-  }
+ 
   

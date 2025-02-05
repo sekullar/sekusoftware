@@ -18,7 +18,7 @@ const Footer = () => {
 
     return(
         <>
-            <div className="flex justify-around mt-56 py-12">
+            <div className="flex lg:flex-row flex-col lg:items-start items-center lg:gap-0 gap-20 lg:justify-around sm:mt-56 mt-24 py-12">
                 <img src={Logo} className="w-[100px]" alt="Logo" />
                 <div className="flex flex-col">
                     <p className="inter-600 text-3xl">Hızlı Menü</p>

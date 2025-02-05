@@ -5,6 +5,7 @@ import { LanguageContext } from "../Context/LanguageContext";
 import Night from "../../../images/night.svg"
 import Sunny from "../../../images/sunny.svg"
 import { useNavigate } from "react-router-dom";
+import HeaderBar from "../../../images/header-bar.svg"
 
 const Header = () => {
   const [cookies, setCookie] = useCookies(["darkMode"]);
@@ -40,13 +41,13 @@ const Header = () => {
         <div className="flex items-center gap-3" onClick={() => navigate("/home")}>
           <img
             src={SekuLogo}
-            className="w-[70px] drop-shadow-lg"
+            className="sm:w-[70px] w-[45px] drop-shadow-lg"
             alt="Seku Software Logo"
           />
-          <p className="roboto-light text-3xl">Seku Software</p>
+          <p className="roboto-light text-3xl sm:block hidden">Seku Software</p>
         </div>
         <div className="flex items-center">
-          <div className="theme-toggle me-3">
+          <div className="theme-toggle me-3 sm:flex hidden">
             <img src={Sunny} className={`w-[25px] ${cookies.darkMode == true ? "invert" : ""} me-3`} alt="Sunny svg" />
             <div
               className={`toggle-switch ${cookies.darkMode ? "dark" : "light"}`}
@@ -56,8 +57,8 @@ const Header = () => {
             </div>
             <img src={Night} className={`w-[25px] ${cookies.darkMode == true ? "invert" : ""} ms-2`} alt="Night svg" />
           </div>
-          <button className="transition-all duration-300 px-4 py-2 rounded-lg text-white roboto-light bg-sky-600 roboto-regular text-lg cursor-pointer outline-0" onClick={() => navigate("/OrderNow")}>{language == "en" ? "Order Now" : "Sipariş ver"}</button>
-
+          <button className="transition-all duration-300 px-4 py-2 rounded-lg text-white roboto-light bg-sky-600 roboto-regular text-lg cursor-pointer outline-0 sm:block hidden me-4" onClick={() => navigate("/OrderNow")}>{language == "en" ? "Order Now" : "Sipariş ver"}</button>
+          <img src={HeaderBar} className="w-[35px]" alt="Bar" />
          </div>
       </div>
     </>

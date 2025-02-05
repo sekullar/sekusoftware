@@ -9,8 +9,8 @@ const InfoMain = () => {
 
     return(
         <>
-            <div className={`flex items-center flex-col mt-56 select-none ${cookies.darkMode ? "dark-mode" : "light-mode"}`}>
-                <p className="inter-600 text-6xl mb-6">Aklınızdaki bazı sorular</p>
+            <div className={`flex items-center flex-col sm:mt-56 mt-24 select-none ${cookies.darkMode ? "dark-mode" : "light-mode"} px-4`}>
+                <p className="inter-600 text-2xl sm:text-6xl mb-6">Aklınızdaki bazı sorular</p>
                 <Accordion allowZeroExpanded>
                     <AccordionItem>
                         <AccordionItemButton>

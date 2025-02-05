@@ -109,13 +109,13 @@ const PlanInfoMain = () => {
                 </div>
             </div>
             <div className="flex justify-center mt-12 py-12">
-                <div className={`flex justify-around items-center px-12 gap-36 ${!cookies.darkMode ? "shadow-2xl border" : ""} bg-stone-900 mx-12 py-4 rounded-lg`}>
+                <div className={`flex justify-around items-center 2xl:flex-row flex-col px-12 gap-36 ${!cookies.darkMode ? "shadow-2xl border" : ""} bg-stone-900 mx-4 lg:mx-12 py-4 rounded-lg`}>
                     <div className="flex flex-col">
-                        <p className="inter-600 text-5xl flex items-center animated-text-blue py-2"><img src={King} alt="King" className="w-[50px] me-2"/>Özel Web Sitesi</p>
-                        <p className="inter-500 text-white inter-500">Her şeyin en baştan özel olarak tasarlandığı siteler</p>
+                        <p className="inter-600 text-3xl sm:text-5xl flex sm:flex-row flex-col items-center animated-text-blue py-2"><img src={King} alt="King" className="w-[50px] me-2"/>Özel Web Sitesi</p>
+                        <p className="inter-500 text-white text-sm sm:text-base inter-500 sm:text-start text-center">Her şeyin en baştan özel olarak tasarlandığı siteler</p>
                         <button className="bg-sky-500 hover:bg-sky-600 transition-all duration-300 text-white inter-600 rounded-lg px-4 py-2 outline-0 mt-4" onClick={() => navigate("/OrderNow")}>Detayları görüşelim</button>
                     </div>
-                    <div className="flex gap-5">
+                    <div className="flex gap-5 sm:flex-row flex-col">
                         <div className="flex flex-col">
                             <p className="inter-500 py-3 border-b flex items-center text-white">Sınrsız sayfa içeriği</p>
                             <p className="inter-500 py-3 border-b flex items-center text-white">Ücretsiz Hosting</p>

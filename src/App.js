@@ -12,9 +12,11 @@ import MemorySite from "./components/Home/ServicesComponents/MemorySite"
 import PromotionSite from "./components/Home/ServicesComponents/PromotionSite"
 import Support from "./components/Home/MainComponents/Support";
 import ShopTerms from "./components/Home/MainComponents/ShopTerms";
+import { useEffect } from "react";
 
 
 function App() {
+
   return (
    <>
     <Toaster />

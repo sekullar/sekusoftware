@@ -19,10 +19,10 @@ const OrderNowMain = () => {
         <div className="flex flex-col select-none">
             <Header />
             <div className="w-full flex items-center flex-col">
-                <div className="flex flex-col p-4 shadow-2xl border rounded-lg w-[500px]">
+                <div className="flex flex-col p-4 shadow-2xl border rounded-lg w-[330px] sm:w-[500px]">
                     <p className="inter-500 mb-3">Ne tür bir web sitesine ihtiyacınız var?</p>
                     <select
-                        className="p-2 border rounded-lg w-[350px] outline-0 focus:border-sky-600 transition-all duration-300"
+                        className="p-2 border rounded-lg w-[250px] sm:w-[350px] outline-0 focus:border-sky-600 transition-all duration-300"
                         value={selectedOption}
                         onChange={(e) => setSelectedOption(e.target.value)}
                     >
@@ -37,7 +37,7 @@ const OrderNowMain = () => {
                 {selectedOption ? (
                     <div className="flex flex-col items-center">
                         <img src={Bottom} alt="Bottom" className="my-5 w-[35px] downAni2" />
-                        <div className="lateAni1 flex flex-col p-4 shadow-2xl border rounded-lg w-[500px]">
+                        <div className="lateAni1 flex flex-col p-4 shadow-2xl border rounded-lg w-[330px] sm:w-[500px]">
                             <p className="inter-500 text-3xl text-center">İletişim bilgilerinizi girin</p>
                             <p className="inter-400 text-center mt-3">
                                 Sitenizin yapımına başlamak için bilgilerinizi girin{" "}

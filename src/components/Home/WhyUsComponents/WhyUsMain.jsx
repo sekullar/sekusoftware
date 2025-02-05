@@ -14,8 +14,8 @@ const WhyUsMain = () => {
     return(
         <>
             <div className="pt-24 select-none" id="whyUs">
-                <p className="inter-600 text-2xl sm:text-5xl sm:ms-12 text-center">Neden mi <br className="sm:hidden block"/> <span className="roboto-light">Seku Software</span>?</p>
-                <div className="flex justify-around mt-20 gap-12">
+                <p className="inter-600 text-3xl sm:text-5xl sm:ms-12 text-center">Neden mi <br className="sm:hidden block"/> <span className="roboto-light">Seku Software</span>?</p>
+                <div className="flex justify-around mt-10 sm:mt-20 gap-12">
                     <img src={mainPhoto4} className="xl:block hidden" loading="lazy" alt="Some Software Icons" />
                     <div className="flex flex-col">
                         <p className="text-4xl sm:text-5xl inter-600  sm:text-start text-center">Çünkü:</p>

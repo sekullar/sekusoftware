@@ -19,10 +19,11 @@ const Article = () => {
 
     return(
         <>
-            <a href="#whyUs" className="flex justify-center w-full absolute bottom-0 mb-12 select-none">
-                <img src={DownArrow} className="w-[50px] downArrowAni"  alt="" />
-            </a>
-            <div className="flex w-full flex-col h-screen-spec items-top overflow-hidden select-none">
+           
+            <div className="flex w-full flex-col h-screen-spec items-top overflow-hidden select-none relative">
+                <a href="#whyUs" className="flex justify-center w-full absolute bottom-0 mb-12 select-none">
+                    <img src={DownArrow} className="w-[50px] downArrowAni"  alt="" />
+                </a>
                 <div  className="w-full" style={{overflow: "hidden", position: "relative"}}>
                     <Marquee gradient={false} speed={50}>
                         {images.map((src, index) => (
@@ -32,7 +33,7 @@ const Article = () => {
                 </div>
                 {language == "en" ?
                 <>
-                    <div className="flex flex-col items-center mt-4 ">
+                    <div className="flex flex-col items-center mt-12 sm:mt-4 ">
                         <p className="inter-400 sm:text-6xl text-3xl text-center">On Websites</p>
                         <p className="inter-600 sm:text-7xl text-4xl text-center">Next-Generation Solutions!</p>
                     </div>
@@ -40,12 +41,12 @@ const Article = () => {
                 </>
                 :
                 <>
-                    <div className="flex flex-col items-center mt-4 ">
+                    <div className="flex flex-col items-center mt-12 sm:mt-4 ">
                         <p className="inter-400 sm:text-6xl text-3xl text-center">Web Sitelerinde</p>
                         <p className="inter-600 sm:text-7xl text-4xl text-center">Yeni Nesil Çözümler!</p>
                     </div>
                 </>}
-                <div className="flex items-center justify-center gap-3 mt-12">
+                <div className="flex items-center justify-center gap-3  mt-4 sm:mt-6">
                     <button className="outline-0 bg-sky-500 hover:bg-sky-600 transition-all duration-300 text-white inter-500 px-3 sm:px-4 py-2 rounded-lg w-[150px] text-lg sm:text-xl" onClick={() => navigate("/OrderNow")}>{language == "en" ? "Order Now" : "Sipariş Ver"}</button>
                     <a href="#GetInfo" className="outline-0 bg-sky-500 hover:bg-sky-600 transition-all duration-300 text-white inter-500  px-3 sm:px-4 py-2 rounded-lg w-[150px] text-lg sm:text-xl text-center">{language == "en" ? "Get Information" : "Bilgi al"}</a>
                 </div>

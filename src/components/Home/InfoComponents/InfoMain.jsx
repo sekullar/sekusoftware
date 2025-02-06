@@ -9,7 +9,7 @@ const InfoMain = () => {
 
     return(
         <>
-            <div className={`flex items-center flex-col sm:mt-56 mt-24 select-none ${cookies.darkMode ? "dark-mode" : "light-mode"} px-4`}>
+            <div className={`flex items-center flex-col sm:mt-56 mt-24 select-none ${cookies.darkMode ? "dark-mode bprder-stone-700" : "light-mode"} px-4`}>
                 <p className="inter-600 text-2xl sm:text-6xl mb-6">Aklınızdaki bazı sorular</p>
                 <Accordion allowZeroExpanded>
                     <AccordionItem>

@@ -19,3 +19,21 @@
         background-position: 0 50%
     }
 }
+
+.openingPlanInfo{
+    animation-name: openingPlanInfo;
+    animation-duration: 1.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    animation-direction: alternate;
+}
+
+@keyframes openingPlanInfo {
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}

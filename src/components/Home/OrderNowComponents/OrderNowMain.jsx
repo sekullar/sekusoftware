@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Header from "../MainComponents/Header";
 import Bottom from "../../../images/bottom.svg";
 import "../../../css/OrderNowMain.css";
+import { useCookies } from "react-cookie";
 
 const OrderNowMain = () => {
     const [selectedOption, setSelectedOption] = useState("");
+    const [cookies, setCookie] = useCookies(["darkMode"]);
 
     const options = [
         { value: "", label: "Seçiniz..." },
@@ -19,16 +21,16 @@ const OrderNowMain = () => {
         <div className="flex flex-col select-none">
             <Header />
             <div className="w-full flex items-center flex-col">
-                <div className="flex flex-col p-4 shadow-2xl border rounded-lg w-[330px] sm:w-[500px]">
+                <div className={`flex flex-col p-4 shadow-2xl border ${cookies.darkMode ? "border-stone-700" : ""} rounded-lg w-[330px] sm:w-[500px]`}>
                     <p className="inter-500 mb-3">Ne tür bir web sitesine ihtiyacınız var?</p>
                     <select
-                        className="p-2 border rounded-lg w-[250px] sm:w-[350px] outline-0 focus:border-sky-600 transition-all duration-300"
+                        className={`p-2 border ${cookies.darkMode ? "border-stone-700" : ""} rounded-lg w-[250px] sm:w-[350px] outline-0 focus:border-sky-600 transition-all duration-300 ${cookies.darkMode ? "bg-stone-800" :"bg-transparent"}`}
                         value={selectedOption}
                         onChange={(e) => setSelectedOption(e.target.value)}
                     >
                         {options.map((option) => (
                             <option key={option.value} value={option.value}>
-                                {option.label}
+                                <span></span>{option.label}
                             </option>
                         ))}
                     </select>
@@ -36,8 +38,8 @@ const OrderNowMain = () => {
 
                 {selectedOption ? (
                     <div className="flex flex-col items-center">
-                        <img src={Bottom} alt="Bottom" className="my-5 w-[35px] downAni2" />
-                        <div className="lateAni1 flex flex-col p-4 shadow-2xl border rounded-lg w-[330px] sm:w-[500px]">
+                        <img src={Bottom} alt="Bottom" className={`my-5 w-[35px] downAni2 ${cookies.darkMode ? "invert" : ""}`} />
+                        <div className={`lateAni1 flex flex-col p-4 items-center shadow-2xl border ${cookies.darkMode ? "border-stone-700" : ""} rounded-lg w-[330px] sm:w-[500px]`}>
                             <p className="inter-500 text-3xl text-center">İletişim bilgilerinizi girin</p>
                             <p className="inter-400 text-center mt-3">
                                 Sitenizin yapımına başlamak için bilgilerinizi girin{" "}

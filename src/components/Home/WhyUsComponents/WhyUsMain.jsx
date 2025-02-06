@@ -5,18 +5,39 @@ import Fast from "../../../images/fast.svg"
 import Rocket from "../../../images/rocket.svg"
 import Secure from "../../../images/secure.svg"
 import Support from "../../../images/support.svg"
+import { useEffect, useState, useRef } from "react";
+import "../../../css/WhyUsMain.css"
+
 
 
 const WhyUsMain = () => {
 
     const [cookies, setCookie] = useCookies(["darkMode"]);
 
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setIsVisible(true);
+            }
+          },
+          { threshold: 0.2 }
+        )
+    
+        if (ref.current) observer.observe(ref.current);
+    
+        return () => observer.disconnect();
+      }, []);
+
     return(
         <>
-            <div className="pt-24 select-none" id="whyUs">
+            <div ref={ref} className={`pt-24 select-none transition-all duration-[1.5s] ${isVisible ? "opacity-100" : "opacity-0"}`} id="whyUs">
                 <p className="inter-600 text-3xl sm:text-5xl sm:ms-12 text-center">Neden mi <br className="sm:hidden block"/> <span className="roboto-light">Seku Software</span>?</p>
                 <div className="flex justify-around mt-10 sm:mt-20 gap-12">
-                    <img src={mainPhoto4} className="xl:block hidden" loading="lazy" alt="Some Software Icons" />
+                    <img src={mainPhoto4} className={`xl:block hidden transition-all duration-300 ${isVisible ? "imgWhyUsAni" : "opacity-0 scale-0"}`} loading="lazy" alt="Some Software Icons" />
                     <div className="flex flex-col">
                         <p className="text-4xl sm:text-5xl inter-600  sm:text-start text-center">Çünkü:</p>
                         <div className="flex flex-col sm:mt-12 mt-16  gap-20 sm:gap-12 ">

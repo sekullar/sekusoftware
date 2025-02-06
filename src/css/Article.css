@@ -20,3 +20,95 @@
         transform: translateY(15px);
     }
 }
+
+.slider{
+    animation-name: slider;
+    animation-timing-function: ease;
+    animation-direction: alternate;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+}
+
+@keyframes slider {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.mainLabel1{
+    animation-name: mainLabel1;
+    animation-duration: 1.5s;
+    animation-timing-function: ease;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+}
+
+@keyframes mainLabel1 {
+    from{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.mainLabel2{
+    animation-name: mainLabel2;
+    animation-duration: 1.5s;
+    animation-delay: 1s;
+    animation-timing-function: ease;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+}
+
+@keyframes mainLabel2 {
+    from{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.doubleButtons{
+    animation-name: doubleButtons;
+    animation-duration: 1.5s;
+    animation-delay: 1.7s;
+    animation-timing-function: ease;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+}
+
+@keyframes doubleButtons {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.downImage{
+    animation-name: downImage;
+    animation-duration: 1.5s;
+    animation-delay: 1.9s;
+    animation-timing-function: ease;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+}
+
+@keyframes downImage {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

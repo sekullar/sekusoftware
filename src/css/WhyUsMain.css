@@ -1,0 +1,18 @@
+.imgWhyUsAni {
+    animation-name: imgWhyUs;
+    animation-duration: 1.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+}
+
+@keyframes imgWhyUs {
+    from {
+        transform: scale(0.87);  /* Küçük başla */
+        opacity: 0;           /* Görünmez başla */
+    }
+
+    to {
+        transform: scale(1);  /* Normal boyuta gel */
+        opacity: 1;           /* Görünür olsun */
+    }
+}

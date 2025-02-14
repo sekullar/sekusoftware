@@ -12,13 +12,15 @@ import MemorySite from "./components/Home/ServicesComponents/MemorySite"
 import PromotionSite from "./components/Home/ServicesComponents/PromotionSite"
 import Support from "./components/Home/MainComponents/Support";
 import ShopTerms from "./components/Home/MainComponents/ShopTerms";
-import { useEffect } from "react";
+import { OffcanvasProvider, Trigger, Offcanvas } from 'react-simple-offcanvas'
+
 
 
 function App() {
 
   return (
    <>
+   <OffcanvasProvider>
     <Toaster />
       <LanguageProvider>
         <Router>
@@ -35,7 +37,8 @@ function App() {
             <Route path="/ShopTerms" element={<ShopTerms />} />
           </Routes>
         </Router>
-      </LanguageProvider>
+      </LanguageProvider> 
+   </OffcanvasProvider>
    </>
   );
 }

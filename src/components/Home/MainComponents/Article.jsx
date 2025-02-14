@@ -26,11 +26,11 @@ const Article = () => {
     return(
         <>
            
-            <div className={`flex w-full flex-col h-screen-spec items-top overflow-hidden select-none relative transition-all duration-300 `}>
+            <div className={`flex w-full flex-col h-screen-spec items-top overflow-hidden select-none relative transition-all duration-300 z-10`}>
                 <a href="#whyUs" className="flex justify-center w-full absolute bottom-0 mb-12 select-none downImage">
                     <img src={DownArrow} className="w-[50px] downArrowAni"  alt="" />
                 </a>
-                <div  className="w-full slider" style={{overflow: "hidden", position: "relative"}}>
+                <div  className="w-full slider z-0" style={{overflow: "hidden", position: "relative"}}>
                     <Marquee gradient={false} speed={50}>
                         {images.map((src, index) => (
                         <img key={index} src={src} alt={`Image ${index + 1}`} className={` h-[150px] sm:h-[300px] ${cookies.darkMode ? "invert" : ""}`}/>

@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import Header from "../MainComponents/Header";
 import Bottom from "../../../images/bottom.svg";
 import "../../../css/OrderNowMain.css";
 import { useCookies } from "react-cookie";
+import toast from "react-hot-toast";
+import { createClient } from '@supabase/supabase-js'
+
 
 const OrderNowMain = () => {
     const [selectedOption, setSelectedOption] = useState("");
+    const [customerName,setCustomerName] = useState("");
+    const [customerMail,setCustomerMail] = useState("");
+    const [customerPhone,setCustomerPhone] = useState("");
     const [cookies, setCookie] = useCookies(["darkMode"]);
 
     const options = [
@@ -16,6 +22,33 @@ const OrderNowMain = () => {
         { value: "love", label: "Anı sitesi" },
         { value: "production", label: "İşletme tanıtım sitesi" }
     ];
+
+    const supabaseUrl = process.env.REACT_APP_APIURL;
+    const supabaseKey = process.env.REACT_APP_APIKEY;
+
+    const supabase = createClient(supabaseUrl,supabaseKey);
+
+    const sendOrder = async () => {
+        toast.loading("Yükleniyor...")
+        try{
+            const {data,error} = await supabase
+            .from("orders")
+            .insert([
+                {website_type: selectedOption, customer_name: customerName, customer_mail: customerMail, customer_phone: customerPhone}
+            ]);
+
+            if (error) {
+                toast.dismiss();
+                toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
+            } else {
+                toast.dismiss();
+                toast.success("Destek talebiniz başarıyla gönderildi!");
+            }
+        }
+        catch(error){
+            console.error(error);
+        }
+    }
 
     return (
         <div className="flex flex-col select-none">
@@ -50,21 +83,24 @@ const OrderNowMain = () => {
                                 type="text"
                                 className="p-2 rounded-lg w-[300px] outline-0 border focus:border-sky-600 transition-all duration-300"
                                 placeholder="İsim"
+                                onChange={(e) => setCustomerName(e.target.value)}
                             />
                             <p className="mt-6 mb-3">E-Posta</p>
                             <input
                                 type="mail"
                                 className="p-2 rounded-lg w-[300px] outline-0 border focus:border-sky-600 transition-all duration-300"
                                 placeholder="E-Posta"
+                                onChange={(e) => setCustomerMail(e.target.value)}
                             />
                             <p className="mt-6 mb-3">Telefon Numarası</p>
                             <input
                                 type="tel"
                                 className="p-2 rounded-lg w-[300px] outline-0 border focus:border-sky-600 transition-all duration-300"
                                 placeholder="Telefon Numarası"
+                                onChange={(e) => setCustomerPhone(e.target.value)}
                             />
                             <div className="flex justify-center mt-5">
-                                <button className="bg-sky-500 hover:bg-sky-600 transition-all duration-300 px-4 py-2 rounded-lg w-[250px] text-white outline-0">
+                                <button className="bg-sky-500 hover:bg-sky-600 transition-all duration-300 px-4 py-2 rounded-lg w-[250px] text-white outline-0" onClick={() => sendOrder()}>
                                     Gönder
                                 </button>
                             </div>

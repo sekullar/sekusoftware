@@ -44,7 +44,7 @@ const WhyUsMain = () => {
                             <div className="flex items-center sm:flex-row flex-col gap-2">
                                 <img src={Rocket} className={`w-[35px] ${cookies.darkMode ? "invert" : ""}`}  alt="" />
                                 <div className="flex flex-col sm:items-start items-center">
-                                    <p className="inter-500 text-lg sm:text-2xl w-[320px] sm:w-[500px] sm:text-start text-center">Sitelerimiz ve yazılımlarımız yapılabilinecek en son hızda hazırlanmaktadır</p>
+                                    <p className="inter-500 text-lg sm:text-2xl w-[320px] sm:w-[500px] sm:text-start text-center">Sitelerimiz ve yazılımlarımız olabilecek en son hızda hazırlanmaktadır</p>
                                     <p className="inter-400 sm:text-base text-sm sm:text-start text-center sm:px-0 px-5">Evet, bazen mesai saatlerimiz uyuklayınca bitiyor.</p>
                                 </div>
                             </div>

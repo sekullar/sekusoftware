@@ -1,0 +1,21 @@
+.bg-black-special-admin{
+    background-color: rgba(0, 0, 0, 0.391);
+    transition: all .3s ease;
+    animation-name: bgBlack;
+    animation-duration: 0.4s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+}
+
+@keyframes bgBlack {
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+
+

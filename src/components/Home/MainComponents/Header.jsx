@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import SekuLogo from "../../../images/logo3.webp";
+import SekuLogo from "../../../images/logo3.svg";
 import { useCookies } from "react-cookie";
 import { LanguageContext } from "../Context/LanguageContext";
 import Night from "../../../images/night.svg"
@@ -40,6 +40,15 @@ const Header = () => {
     }
   }, [isDarkMode]); 
 
+  const returnWidthValueLogo = (param) =>{
+      if(window.innerWidth >= "640px"){
+        return "70px"
+      }
+      else{
+        return "45px"
+      }
+  }
+
   return (
     <>
       {offcanvasOpen && (
@@ -77,11 +86,7 @@ const Header = () => {
       </motion.div>
       <div className="flex items-center justify-between bg-white p-5 header select-none">
         <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate("/home")}>
-          <img
-            src={SekuLogo}
-            className="sm:w-[70px] w-[45px] drop-shadow-lg"
-            alt="Seku Software Logo"
-          />
+          <img src={SekuLogo} width={returnWidthValueLogo()} height={returnWidthValueLogo()} className="sm:w-[70px] w-[45px] drop-shadow-lg" alt="Seku Software Logo"/>
           <p className="roboto-light text-3xl sm:block hidden">Seku Software</p>
         </div>
         <div className="flex items-center">

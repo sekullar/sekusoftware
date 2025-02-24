@@ -25,13 +25,7 @@ import { useNavigate } from "react-router-dom";
 
 function App() {
   
-  useEffect(() => {
-    const preloadImage = new Image();
-    preloadImage.src = t1;    
 
-    const logoOptimizer = new Image();
-    logoOptimizer.src = Logo;    
-  }, [])
 
   return (
    <>

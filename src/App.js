@@ -18,6 +18,7 @@ import AdminLogin from "./components/Home/Admin/AdminLogin";
 import { AdminProvider } from "./components/Home/Context/AdminContext";
 import ServerInfo from "./components/Home/Admin/ServerInfo";
 import { useEffect } from "react";
+import Logo from "./images/logo3.svg"
 import { useNavigate } from "react-router-dom";
 
 
@@ -26,7 +27,10 @@ function App() {
   
   useEffect(() => {
     const preloadImage = new Image();
-      preloadImage.src = t1;    
+    preloadImage.src = t1;    
+
+    const logoOptimizer = new Image();
+    logoOptimizer.src = Logo;    
   }, [])
 
   return (

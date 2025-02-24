@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import SekuLogo from "../../../images/logo3.svg";
+import SekuLogo from "../../../images/logo3.webp";
 import { useCookies } from "react-cookie";
 import { LanguageContext } from "../Context/LanguageContext";
 import Night from "../../../images/night.svg"

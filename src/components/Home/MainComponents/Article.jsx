@@ -1,12 +1,12 @@
-import mainPhoto from "../../../images/mainPhoto.svg"
 import Marquee from "react-fast-marquee";
 import DownArrow from "../../../images/downArrow.svg"
 import "../../../css/Article.css"
 import { LanguageContext } from "../Context/LanguageContext";
-import { useContext } from "react";
-import t1 from "../../../images/t1.png"
+import { useContext, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import t1 from "../../../images/t1.webp"
+
 
 
 const Article = () => {
@@ -22,6 +22,7 @@ const Article = () => {
 
     
     
+  
 
     return(
         <>
@@ -31,9 +32,9 @@ const Article = () => {
                     <img src={DownArrow} className="w-[50px] downArrowAni"  alt="" />
                 </a>
                 <div  className="w-full slider z-0" style={{overflow: "hidden", position: "relative"}}>
-                    <Marquee gradient={false} speed={50}>
+                    <Marquee gradient={true} speed={50}>
                         {images.map((src, index) => (
-                        <img key={index} src={src} alt={`Image ${index + 1}`} className={` h-[150px] sm:h-[300px] ${cookies.darkMode ? "invert" : ""}`}/>
+                        <img key={index} src={src} alt={`Image ${index + 1}`} width={"auto"} height={"300px"} className={` h-[150px] sm:h-[300px] ${cookies.darkMode ? "invert" : ""}`}/>
                         ))}
                     </Marquee>
                 </div>

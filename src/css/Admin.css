@@ -1,0 +1,23 @@
+.hover-ani-shadow{
+    box-shadow: 0px 12px 29px -15px rgba(0,0,0,0.75);
+    transition: all .8s ease;
+}
+
+.hover-ani-shadow:hover{
+    box-shadow: 0px 12px 30px 0px rgba(0,0,0,0.75);
+}
+
+.gradientBgAdmin {
+    background: linear-gradient(135deg, #0096a9, #00A3FF);
+    background-size: 300% 300%;
+    animation: gradientBg 5s ease infinite alternate;
+}
+
+@keyframes gradientBg {
+    from {
+        background-position: 0% 50%;
+    }
+    to {
+        background-position: 100% 50%;
+    }
+}

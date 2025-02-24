@@ -66,75 +66,93 @@ body.dark-mode {
   left: 33px; /* Dark modda sağa kaydır */
 }
 
+@font-face{
+  font-family: "Inter";
+  src: url("../fonts/InterVariable.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Roboto-light";
+  src: url("../fonts/Roboto-Light.woff2") format("woff2");
+  font-display: swap;
+}
+
 
 .roboto-thin {
-    font-family: "Roboto", serif;
+    font-family: "Roboto";
     font-weight: 100;
     font-style: normal;
   }
   
   .roboto-light {
-    font-family: "Roboto", serif;
+    font-family: "Roboto-light";
     font-weight: 300;
     font-style: normal;
   }
   
   .roboto-regular {
-    font-family: "Roboto", serif;
+    font-family: "Roboto";
     font-weight: 400;
     font-style: normal;
   }
   
   .roboto-medium {
-    font-family: "Roboto", serif;
+    font-family: "Roboto";
     font-weight: 500;
     font-style: normal;
   }
   
   .roboto-bold {
-    font-family: "Roboto", serif;
+    font-family: "Roboto";
     font-weight: 700;
     font-style: normal;
   }
   
   .roboto-black {
-    font-family: "Roboto", serif;
+    font-family: "Roboto";
     font-weight: 900;
     font-style: normal;
   }
   
   .roboto-thin-italic {
-    font-family: "Roboto", serif;
+    font-family: "Roboto";
     font-weight: 100;
     font-style: italic;
   }
   
   .roboto-light-italic {
-    font-family: "Roboto", serif;
+    font-family: "Roboto";
     font-weight: 300;
     font-style: italic;
   }
   
   .roboto-regular-italic {
-    font-family: "Roboto", serif;
+    font-family: "Roboto";
     font-weight: 400;
     font-style: italic;
   }
   
   .roboto-medium-italic {
-    font-family: "Roboto", serif;
+    font-family: "Roboto";
     font-weight: 500;
     font-style: italic;
   }
   
   .roboto-bold-italic {
-    font-family: "Roboto", serif;
+    font-family: "Roboto";
     font-weight: 700;
     font-style: italic;
   }
   
   .roboto-black-italic {
-    font-family: "Roboto", serif;
+    font-family: "Roboto";
     font-weight: 900;
     font-style: italic;
   }
@@ -142,21 +160,21 @@ body.dark-mode {
   
 
   .inter-400{
-    font-family: "Inter", serif;
+    font-family: "Inter";
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
   }
 
   .inter-500{
-    font-family: "Inter", serif;
+    font-family: "Inter";
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
   }
 
   .inter-600{
-    font-family: "Inter", serif;
+    font-family: "Inter";
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;

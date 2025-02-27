@@ -69,6 +69,12 @@ const Main = () => {
                                 </div>
                                 <div className="w-full gradientBgAdmin rounded-b-lg h-[15px] absolute bottom-0" />
                             </div>
+                            <div className="flex flex-col relative" onClick={() => navigate("/SekuSoftwareAdminPanel/SiteAccess")}>
+                                <div className="flex flex-col w-[400px] min-w-[40px] border hover:border-0 hover-ani-shadow p-8 rounded-lg cursor-pointer">
+                                    <p className="inter-500 text-3xl">Sunucu erişimi</p>
+                                </div>
+                                <div className="w-full gradientBgAdmin rounded-b-lg h-[15px] absolute bottom-0" />
+                            </div>
                         </div>
                     </div>
                 </div>

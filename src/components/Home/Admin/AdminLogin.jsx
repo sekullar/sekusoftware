@@ -1,4 +1,4 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import Logo from "../../../images/logo3.svg"
 import { createClient } from '@supabase/supabase-js';
 import toast from "react-hot-toast";
@@ -12,13 +12,19 @@ const AdminLogin = () => {
     const [user,setUser] = useState();
     const [logged,setLogged] = useState(false);
 
-    const {setLoggedContext} = useContext(AdminContext);
+    const {loggedContext,setLoggedContext} = useContext(AdminContext);
 
 
     const supabaseUrl = process.env.REACT_APP_APIURL;
     const supabaseKey = process.env.REACT_APP_APIKEY;
 
     const supabase = createClient(supabaseUrl, supabaseKey);
+
+    useEffect(() => {
+        if(loggedContext){
+            setLogged(true);
+        }
+    }, [loggedContext])
 
     const login = async () => {
         toast.loading("Yükleniyor...")
@@ -31,6 +37,9 @@ const AdminLogin = () => {
                 toast.error("E-Posta veya şifre yanlış!");
             } else {
                 setUser(data);
+                const session = await supabase.auth.getSession();
+                console.log("Gelen Token:", session.data.session?.access_token);
+                console.log(data);
                 toast.dismiss();
                 setLogged(true);
                 setLoggedContext(true);

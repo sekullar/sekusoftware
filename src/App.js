@@ -16,10 +16,11 @@ import ShopTerms from "./components/Home/MainComponents/ShopTerms";
 import { OffcanvasProvider, Trigger, Offcanvas } from 'react-simple-offcanvas'
 import AdminLogin from "./components/Home/Admin/AdminLogin";
 import { AdminProvider } from "./components/Home/Context/AdminContext";
-import ServerInfo from "./components/Home/Admin/ServerInfo";
+import SiteInfo from "./components/Home/Admin/SiteInfo";
 import { useEffect } from "react";
 import Logo from "./images/logo3.svg"
 import { useNavigate } from "react-router-dom";
+import SiteAccess from "./components/Home/Admin/SiteAccess";
 
 
 
@@ -46,7 +47,8 @@ function App() {
                 <Route path="/Support" element={<Support />} />
                 <Route path="/ShopTerms" element={<ShopTerms />} />
                   <Route path="/SekuSoftwareAdminPanel" element={<AdminLogin />} />
-                  <Route path="/SekuSoftwareAdminPanel/ServerInfo" element={<ServerInfo />} />
+                  <Route path="/SekuSoftwareAdminPanel/ServerInfo" element={<SiteInfo />} />
+                  <Route path="/SekuSoftwareAdminPanel/SiteAccess" element={<SiteAccess />} />
               </Routes>
             </Router>
           </LanguageProvider> 

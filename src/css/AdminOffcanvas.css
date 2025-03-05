@@ -1,0 +1,20 @@
+.bg-semiblack-2{
+    background-color: rgba(0, 0, 0, 0.355);
+}
+
+.slideAni{
+    animation-name: slideAni;
+    animation-timing-function: ease;
+    animation-duration: .5s;
+    animation-fill-mode: both;
+    animation-direction: alternate;
+}
+
+@keyframes slideAni{
+    from{
+        transform: translateX(100%);
+    }
+    else{
+        transform: translateX(0);
+    }
+}

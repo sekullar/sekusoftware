@@ -1,6 +1,5 @@
 import Main from "./components/Home/MainComponents/Main";
 import "./css/main.css"
-import t1 from "./images/t1.webp"
 import { LanguageProvider } from "./components/Home/Context/LanguageContext";
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -17,10 +16,9 @@ import { OffcanvasProvider, Trigger, Offcanvas } from 'react-simple-offcanvas'
 import AdminLogin from "./components/Home/Admin/AdminLogin";
 import { AdminProvider } from "./components/Home/Context/AdminContext";
 import SiteInfo from "./components/Home/Admin/SiteInfo";
-import { useEffect } from "react";
-import Logo from "./images/logo3.svg"
-import { useNavigate } from "react-router-dom";
 import SiteAccess from "./components/Home/Admin/SiteAccess";
+import CheckSupport from "./components/Home/Admin/CheckSupport";
+import CreatePayDate from "./components/Home/Admin/CreatePayDate";
 
 
 
@@ -49,6 +47,8 @@ function App() {
                   <Route path="/SekuSoftwareAdminPanel" element={<AdminLogin />} />
                   <Route path="/SekuSoftwareAdminPanel/ServerInfo" element={<SiteInfo />} />
                   <Route path="/SekuSoftwareAdminPanel/SiteAccess" element={<SiteAccess />} />
+                  <Route path="/SekuSoftwareAdminPanel/CheckSupport" element={<CheckSupport />} />
+                  <Route path="/SekuSoftwareAdminPanel/CreatePayDate" element={<CreatePayDate />} />
               </Routes>
             </Router>
           </LanguageProvider> 

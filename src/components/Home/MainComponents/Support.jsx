@@ -59,7 +59,7 @@ const Support = () => {
                         <input type="text" onChange={(e) => setTitle(e.target.value)} className={`w-[350px] border p-2 rounded-lg outline-0 ${cookies.darkMode ? "bg-transparent border p-2 rounded-lg border-gray-400 focus:bg-gray-600 transition-all duration-300" : ""}`} placeholder="Konu"/>
                     </div>
                     <div className="flex flex-col">
-                        <p className="inter-500 text-xl mb-3">Size ulaşabileceğimiz e-posta veya telefon numarası</p>
+                        <p className="inter-500 text-xl mb-3">Size ulaşabileceğimiz telefon numarası</p>
                         <input type="text" onChange={(e) => setContact(e.target.value)} className={`w-[350px] border p-2 rounded-lg outline-0 ${cookies.darkMode ? "bg-transparent border p-2 rounded-lg border-gray-400 focus:bg-gray-600 transition-all duration-300" : ""}`} placeholder="İletişim adresi"/>
                     </div>
                     <div className="flex flex-col">

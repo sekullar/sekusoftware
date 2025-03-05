@@ -32,7 +32,7 @@ const Article = () => {
                     <img src={DownArrow} className="w-[50px] downArrowAni"  alt="" />
                 </a>
                 <div  className="w-full slider z-0" style={{overflow: "hidden", position: "relative"}}>
-                    <Marquee gradient={true} speed={50}>
+                    <Marquee speed={50}>
                         {images.map((src, index) => (
                         <img key={index} src={src} alt={`Image ${index + 1}`} width={"auto"} height={"300px"} className={` h-[150px] sm:h-[300px] ${cookies.darkMode ? "invert" : ""}`}/>
                         ))}

@@ -5,6 +5,7 @@ import "../../../css/OrderNowMain.css";
 import { useCookies } from "react-cookie";
 import toast from "react-hot-toast";
 import { createClient } from '@supabase/supabase-js'
+import TelegramBot from "../tools/TelegramBot";
 
 
 const OrderNowMain = () => {
@@ -13,6 +14,7 @@ const OrderNowMain = () => {
     const [customerMail,setCustomerMail] = useState("");
     const [customerPhone,setCustomerPhone] = useState("");
     const [cookies, setCookie] = useCookies(["darkMode"]);
+    const [trigger,setTrigger] = useState(1);
 
     const options = [
         { value: "", label: "Seçiniz..." },
@@ -29,6 +31,7 @@ const OrderNowMain = () => {
     const supabase = createClient(supabaseUrl,supabaseKey);
 
     const sendOrder = async () => {
+        setTrigger(trigger + 1)
         toast.loading("Yükleniyor...")
         try{
             const {data,error} = await supabase
@@ -42,7 +45,7 @@ const OrderNowMain = () => {
                 toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
             } else {
                 toast.dismiss();
-                toast.success("Destek talebiniz başarıyla gönderildi!");
+                toast.success("Siparişiniz başarıyla gönderildi!");
             }
         }
         catch(error){
@@ -52,6 +55,7 @@ const OrderNowMain = () => {
 
     return (
         <div className="flex flex-col select-none">
+            <TelegramBot task="order" messageParam={customerName} trigger={trigger}/>
             <Header />
             <div className="w-full flex items-center flex-col">
                 <div className={`flex flex-col p-4 shadow-2xl border ${cookies.darkMode ? "border-stone-700" : ""} rounded-lg w-[330px] sm:w-[500px]`}>

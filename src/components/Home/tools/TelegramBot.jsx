@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
-const TelegramBot = ({ task, messageParam }) => {
+const TelegramBot = ({ task, messageParam, trigger }) => {
     const botToken = process.env.REACT_APP_TELEGRAMAPIKEY;
     const chatId = process.env.REACT_APP_TELEGRAMCHATID;
     const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
@@ -18,25 +18,22 @@ const TelegramBot = ({ task, messageParam }) => {
     }, [message]);
 
     const sendMessage = async () => {
-        console.log("Gönderilecek mesaj:", message);
-
+        console.log("Gönderilecek mesaj:", message, messageParam, supportMessage);
         await fetch(apiUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 chat_id: chatId,
-                text: task == "support" ? supportMessage : message,
+                text: task == "support" ? `✉️ Yeni bir destek talebi bulunuyor! İçerik:${messageParam}` : task == "order" ? `📬Yeni sipariş var!:${messageParam}` : message,
                 parse_mode: "Markdown",
             }),
         })
             .then((response) => response.json())
             .then((data) => {
-                toast.success("Test mesajı gönderildi! Lütfen kontrol edin.");
                 console.log(data);
             })
             .catch((error) => {
                 console.error(error);
-                toast.error("Telegram Bot API mesajı gönderemedi!");
             });
     };
 
@@ -48,11 +45,13 @@ const TelegramBot = ({ task, messageParam }) => {
     };
 
     useEffect(() => {
-        if(task == "support"){
-            setSupportMessage(`📬 Yeni bir destek talebi bulunuyor! İçerik:${messageParam}`)
+        if(task == "support" && trigger != 1){
             sendMessage();
         }
-    }, [])
+        if(task == "order" && trigger != 1){
+            sendMessage();
+        }
+    }, [trigger])
 
     return (
         <>

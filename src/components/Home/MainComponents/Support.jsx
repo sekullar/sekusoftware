@@ -13,6 +13,8 @@ const Support = () => {
     const [message,setMessage] = useState("");
     const [contact,setContact] = useState("");
 
+    const [telegramTrigger,setTelegramTrigger] = useState(1)
+
 
     const supabaseUrl = process.env.REACT_APP_APIURL;
     const supabaseKey = process.env.REACT_APP_APIKEY;
@@ -20,6 +22,7 @@ const Support = () => {
     const supabase = createClient(supabaseUrl,supabaseKey);
 
     const sendSupport = async () => {
+        setTelegramTrigger(telegramTrigger + 1)
         toast.loading("Yükleniyor...");
         if (!title || !message || !contact) {
             toast.error("Lütfen tüm alanları doldurun!");
@@ -28,7 +31,7 @@ const Support = () => {
 
         try{
             const {data,error} = await supabase
-            .from("support_requests")
+            .from("support_tickets")
             .insert([
                 { title: title, contact, message }
             ]);
@@ -57,20 +60,20 @@ const Support = () => {
                 <div className="flex flex-col items-start gap-6">
                     <div className="flex flex-col">
                         <p className="inter-500 text-xl mb-3">Konu</p>
-                        <input type="text" onChange={(e) => setTitle(e.target.value)} className={`w-[350px] border p-2 rounded-lg outline-0 ${cookies.darkMode ? "bg-transparent border p-2 rounded-lg border-gray-400 focus:bg-gray-600 transition-all duration-300" : ""}`} placeholder="Konu"/>
+                        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className={`w-[350px] border p-2 rounded-lg outline-0 ${cookies.darkMode ? "bg-transparent border p-2 rounded-lg border-gray-400 focus:bg-gray-600 transition-all duration-300" : ""}`} placeholder="Konu"/>
                     </div>
                     <div className="flex flex-col">
                         <p className="inter-500 text-xl mb-3">Size ulaşabileceğimiz telefon numarası</p>
-                        <input type="text" onChange={(e) => setContact(e.target.value)} className={`w-[350px] border p-2 rounded-lg outline-0 ${cookies.darkMode ? "bg-transparent border p-2 rounded-lg border-gray-400 focus:bg-gray-600 transition-all duration-300" : ""}`} placeholder="İletişim adresi"/>
+                        <input type="text" value={contact} onChange={(e) => setContact(e.target.value)} className={`w-[350px] border p-2 rounded-lg outline-0 ${cookies.darkMode ? "bg-transparent border p-2 rounded-lg border-gray-400 focus:bg-gray-600 transition-all duration-300" : ""}`} placeholder="İletişim adresi"/>
                     </div>
                     <div className="flex flex-col">
                         <p className="inter-500 text-xl mb-3">Mesajınız</p>
-                        <input type="text" onChange={(e) => setMessage(e.target.value)} className={`w-[350px] border p-2 rounded-lg outline-0 ${cookies.darkMode ? "bg-transparent border p-2 rounded-lg border-gray-400 focus:bg-gray-600 transition-all duration-300" : ""}`} placeholder="Mesajınız"/>
+                        <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} className={`w-[350px] border p-2 rounded-lg outline-0 ${cookies.darkMode ? "bg-transparent border p-2 rounded-lg border-gray-400 focus:bg-gray-600 transition-all duration-300" : ""}`} placeholder="Mesajınız"/>
                     </div>
-                    <button className="bg-sky-500 hover:bg-sky-600 inter-500 text-white px-5 py-2 rounded-lg" onClick={() => sendSupport()}>Gönder</button>
+                    <button className="bg-sky-500 hover:bg-sky-600 inter-500 text-white px-5 py-2 rounded-lg outline-0 transition-all " onClick={() => sendSupport()}>Gönder</button>
                 </div>
             </div>
-            <TelegramBot task={"support"} messageParam={message}/>
+            <TelegramBot task={"support"} messageParam={message} trigger={telegramTrigger}/>
         </>        
     )
 }

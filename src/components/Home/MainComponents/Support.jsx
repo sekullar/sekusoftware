@@ -3,6 +3,7 @@ import { useCookies } from "react-cookie";
 import { createClient } from '@supabase/supabase-js'
 import toast from "react-hot-toast";
 import { useState } from "react";
+import TelegramBot from "../tools/TelegramBot"
 
 const Support = () => {
 
@@ -69,6 +70,7 @@ const Support = () => {
                     <button className="bg-sky-500 hover:bg-sky-600 inter-500 text-white px-5 py-2 rounded-lg" onClick={() => sendSupport()}>Gönder</button>
                 </div>
             </div>
+            <TelegramBot task={"support"} messageParam={message}/>
         </>        
     )
 }

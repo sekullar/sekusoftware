@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
-const TelegramBot = ({ task }) => {
+const TelegramBot = ({ task, messageParam }) => {
     const botToken = process.env.REACT_APP_TELEGRAMAPIKEY;
     const chatId = process.env.REACT_APP_TELEGRAMCHATID;
     const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
     const [message, setMessage] = useState("");
     const [shouldSend, setShouldSend] = useState(false);
+    const [supportMessage,setSupportMessage] = useState("");
 
     useEffect(() => {
         if (shouldSend && message !== "") {
@@ -24,7 +25,7 @@ const TelegramBot = ({ task }) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 chat_id: chatId,
-                text: message,
+                text: task == "support" ? messageParam : message,
                 parse_mode: "Markdown",
             }),
         })
@@ -45,6 +46,13 @@ const TelegramBot = ({ task }) => {
             setShouldSend(true);
         }
     };
+
+    useEffect(() => {
+
+        if(task == "support"){
+            setSupportMessage(`📬 Yeni bir destek talebi bulunuyor! İçerik:${messageParam}`)
+        }
+    }, [])
 
     return (
         <>

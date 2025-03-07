@@ -41,7 +41,6 @@ const SiteAccess = () => {
     }, [])
 
     useEffect(() => {
-        console.log(innerFunc)
         if(innerFunc != 1){
             getAllAccessibleSite();
         }
@@ -86,7 +85,6 @@ const SiteAccess = () => {
         } else {
             setData(data);
             setLoading(false);
-            console.log("Gelen veriler:", data);
         }
     }
 

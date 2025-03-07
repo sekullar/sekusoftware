@@ -126,7 +126,6 @@ const ServerInfo = () => {
             toast.dismiss();
             setData(data);
             setLoading(false);
-            console.log("Gelen veriler:", data);
         }
     };    
 
@@ -191,7 +190,6 @@ const ServerInfo = () => {
             setPageValue(1);
             getSiteInfos();
             toast.success("Site verisi oluşturuldu.");
-            console.log("Başarıyla eklendi:", data);
         }
     };
     

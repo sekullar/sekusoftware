@@ -38,8 +38,6 @@ const AdminLogin = () => {
             } else {
                 setUser(data);
                 const session = await supabase.auth.getSession();
-                console.log("Gelen Token:", session.data.session?.access_token);
-                console.log(data);
                 toast.dismiss();
                 setLogged(true);
                 setLoggedContext(true);

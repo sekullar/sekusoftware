@@ -18,3 +18,14 @@
         transform: translateX(0);
     }
 }
+
+.szh-accordion__item-btn{
+    outline: 0px solid transparent;
+    font-family: "Inter";
+    font-size: 25px;
+    font-weight: 550;
+}
+
+.szh-accordion__item-content{
+    transition: height 0.25s cubic-bezier(0, 0, 0, 1);
+}

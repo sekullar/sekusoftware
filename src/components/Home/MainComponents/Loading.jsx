@@ -21,7 +21,6 @@ const Loading = () => {
     //       try {
     //         const response = await fetch("https://ipapi.co/json/"); 
     //         const data = await response.json();
-    //         console.log(data);
     //         if (data.country_code === "TR") {
     //           setLanguage("tr"); 
     //           setLoading(false);

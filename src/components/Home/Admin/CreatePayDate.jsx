@@ -37,17 +37,14 @@ const CreatePayDate = () => {
 
     const handleDateChange = (date) => {
         const toTimestamp = (dateString) => new Date(dateString).getTime();
-        console.log(date)
         setSelectedDate(date);
         setSendingDate(toTimestamp(date))
-        console.log(format(date, "d MMMM yyyy", { locale: tr })); 
     };
 
     const handleDateChange2 = (date) => {
         const toTimestamp = (dateString) => new Date(dateString).getTime();
         setSelectedDate2(date);
         setSendingDate2(toTimestamp(date))
-        console.log(format(date, "d MMMM yyyy", { locale: tr })); 
     };
 
 
@@ -77,7 +74,6 @@ const CreatePayDate = () => {
         }
         else{
             setLoading(false);
-            console.log(data);
             setData(data);
             filterSelectPayDate(data);
         }
@@ -151,18 +147,14 @@ const CreatePayDate = () => {
 
     const filterSelectPayDate = async (data) => {
         let newData = [...data];
-        console.log("started", data);
     
         if (!filters.unpaid && !filters.dueToday && !filters.overdue) {
-            console.log("before check", data);
             setFilteredData(data);
-            console.log("1");
             return;
         }
     
         if (filters.unpaid) {
             newData = newData.filter(item => item.isPay == false);
-            console.log("1x - Unpaid Filtered Data:", newData);
         }
     
         if (filters.overdue) {
@@ -170,7 +162,6 @@ const CreatePayDate = () => {
                 const itemDate = Number(item.endPayDate); 
                 return itemDate < Date.now() && !item.isPay;
             });
-            console.log("2 - Overdue Filtered Data:", newData);
         }
     
         if (filters.dueToday) {
@@ -179,15 +170,12 @@ const CreatePayDate = () => {
     
             newData = newData.filter(item => {
                 const itemDate = Number(item.endPayDate); 
-                console.log(now,fiveDaysLater,itemDate)
                 return itemDate >= now && itemDate <= fiveDaysLater && !item.isPay; 
             });
-            console.log("3 - Due Today Filtered Data:", newData);
         }
     
         setFilteredData(newData);
         setLoading(false);
-        console.log("end");
     };
     
     
@@ -278,8 +266,11 @@ const CreatePayDate = () => {
         </Modal>
         {loading ? <Loading /> :
             <div className="flex flex-col h-screen w-full p-5 min-w-[1000px] overflow-auto">
-                <p className="inter-600 text-2xl">Listelenen ödemeler</p>
-                <div className="flex flex-col items-start my-4">
+                <div className="flex justify-start">
+                    <button className="bg-sky-500 hover:bg-sky-600 transition-all duration-300 text-white inter-500 rounded-lg py-2 px-4 w-[160px] mb-6" onClick={() => navigate("/SekuSoftwareAdminPanel")}>Anasayfaya dön</button>
+                </div>
+                <p className="inter-600 text-2xl text-center">Listelenen ödemeler</p>
+                <div className="flex flex-col items-center my-4">
                    <div className="flex items-center gap-4">
                         <p className="inter-500 text-lg bg-sky-500 hover:bg-sky-600 transition-all duration-300 px-4 py-2 text-white inter-600 rounded-lg" onClick={() => {setModalOpen(!modalOpen)}}>Ödeme Ekle</p>
                         <p className="inter-500 text-lg bg-sky-500 hover:bg-sky-600 transition-all duration-300 px-4 py-2 text-white inter-600 rounded-lg cursor-pointer" onClick={() => filterSelectPayDate(data)}>Filtrele</p>
@@ -322,7 +313,6 @@ const CreatePayDate = () => {
                 </div>
                 <div className="flex flex-col">
                      {filteredData && filteredData.map((pay,key) => {
-                        console.log("filteredData here", filteredData)
                         return(
                             <>
                             <div key={key} className="flex items-center" onClick={() => {setDetailModal(pay); setDetailPayForModal(!detailPayForModal)}}>

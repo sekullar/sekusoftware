@@ -54,11 +54,9 @@ const Main = () => {
         .select("*")
 
         if(error){
-            console.log(error);
             toast.error("getSupportTickets alınırken hata oluştu")
         }
         else{
-            console.log(data);
             setSupportTickets(data.length);
             setLoading(false);
         }
@@ -74,7 +72,6 @@ const Main = () => {
             toast.error("getMonthPay alınırken hata oluştu!")
         }
         else{
-            console.log(data);
             MonthPayPlusAndReduce(data);
             getSupportTickets();
         }
@@ -92,7 +89,6 @@ const Main = () => {
             toast.error("getActiveOrders alınırken hata oluştu");
         }
         else{
-            console.log(data);
             setActiveOrders(data.length);
             getMonthPay();
         }
@@ -109,7 +105,6 @@ const Main = () => {
             toast.error("getActiveSite alınırken hata oluştu!")
         }
         else{
-            console.log(data);
             setActiveSiteValue(data.length)
             getActiveOrders();
         }
@@ -174,13 +169,13 @@ const Main = () => {
                             <div className="flex overflow-auto items-center gap-5 mx-8">
                                 <div className="flex flex-col relative" onClick={() => navigate("/SekuSoftwareAdminPanel/ServerInfo")}>
                                     <div className="flex flex-col w-[400px] min-w-[40px] border hover:border-0 hover-ani-shadow p-8 rounded-lg cursor-pointer">
-                                        <p className="inter-500 text-3xl">Sunucu bilgileri</p>
+                                        <p className="inter-500 text-3xl">Site bilgileri</p>
                                     </div>
                                     <div className="w-full gradientBgAdmin rounded-b-lg h-[15px] absolute bottom-0" />
                                 </div>
                                 <div className="flex flex-col relative" onClick={() => navigate("/SekuSoftwareAdminPanel/SiteAccess")}>
                                     <div className="flex flex-col w-[400px] min-w-[40px] border hover:border-0 hover-ani-shadow p-8 rounded-lg cursor-pointer">
-                                        <p className="inter-500 text-3xl">Sunucu erişimi</p>
+                                        <p className="inter-500 text-3xl">Site erişimi</p>
                                     </div>
                                     <div className="w-full gradientBgAdmin rounded-b-lg h-[15px] absolute bottom-0" />
                                 </div>
@@ -192,7 +187,7 @@ const Main = () => {
                                 </div>
                                 <div className="flex flex-col relative" onClick={() => navigate("/SekuSoftwareAdminPanel/CreatePayDate")}>
                                     <div className="flex flex-col w-[430px] min-w-[40px] border hover:border-0 hover-ani-shadow p-8 rounded-lg cursor-pointer">
-                                        <p className="inter-500 text-3xl">Ödeme notu ekle</p>
+                                        <p className="inter-500 text-3xl">Ödeme tarihi ekle</p>
                                     </div>
                                     <div className="w-full gradientBgAdmin rounded-b-lg h-[15px] absolute bottom-0" />
                                 </div>

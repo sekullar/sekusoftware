@@ -19,6 +19,8 @@ import SiteInfo from "./components/Home/Admin/SiteInfo";
 import SiteAccess from "./components/Home/Admin/SiteAccess";
 import CheckSupport from "./components/Home/Admin/CheckSupport";
 import CreatePayDate from "./components/Home/Admin/CreatePayDate";
+import CustomerSupport from "./components/Home/Admin/CustomerSupport";
+import CustomerSupportDetail from "./components/Home/Admin/CustomerSupportDetail";
 
 
 
@@ -49,6 +51,9 @@ function App() {
                   <Route path="/SekuSoftwareAdminPanel/SiteAccess" element={<SiteAccess />} />
                   <Route path="/SekuSoftwareAdminPanel/CheckSupport" element={<CheckSupport />} />
                   <Route path="/SekuSoftwareAdminPanel/CreatePayDate" element={<CreatePayDate />} />
+                  <Route path="/SekuSoftwareAdminPanel/CustomerSupport" element={<CustomerSupport />} />
+                  <Route path="/SekuSoftwareAdminPanel/CustomerSupport/CustomerSupportDetail" element={<CustomerSupportDetail/>} />
+
               </Routes>
             </Router>
           </LanguageProvider> 

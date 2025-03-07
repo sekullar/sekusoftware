@@ -43,7 +43,6 @@ const CheckSupport = () => {
         }
         else{
             setLoading(false);
-            console.log(data);
             setTickets(data);
         }
     }

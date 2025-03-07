@@ -25,7 +25,7 @@ const TelegramBot = ({ task, messageParam }) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 chat_id: chatId,
-                text: task == "support" ? messageParam : message,
+                text: task == "support" ? supportMessage : message,
                 parse_mode: "Markdown",
             }),
         })
@@ -48,9 +48,9 @@ const TelegramBot = ({ task, messageParam }) => {
     };
 
     useEffect(() => {
-
         if(task == "support"){
             setSupportMessage(`📬 Yeni bir destek talebi bulunuyor! İçerik:${messageParam}`)
+            sendMessage();
         }
     }, [])
 

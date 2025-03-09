@@ -47,7 +47,7 @@ function App() {
                 <Route path="/Support" element={<Support />} />
                 <Route path="/ShopTerms" element={<ShopTerms />} />
                   <Route path="/SekuSoftwareAdminPanel" element={<AdminLogin />} />
-                  <Route path="/SekuSoftwareAdminPanel/ServerInfo" element={<SiteInfo />} />
+                  <Route path="/SekuSoftwareAdminPanel/SiteInfo" element={<SiteInfo />} />
                   <Route path="/SekuSoftwareAdminPanel/SiteAccess" element={<SiteAccess />} />
                   <Route path="/SekuSoftwareAdminPanel/CheckSupport" element={<CheckSupport />} />
                   <Route path="/SekuSoftwareAdminPanel/CreatePayDate" element={<CreatePayDate />} />

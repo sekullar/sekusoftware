@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { AdminContext } from '../Context/AdminContext';
 import Switch from '../tools/Switch';
 import AdminAccessButton from '../tools/AdminAccessButton';
+import AdminHeader from './AdminHeader';
 
 
 const SiteAccess = () => {
@@ -97,7 +98,8 @@ const SiteAccess = () => {
     }, [loggedTrue])
 
     return(
-        <>
+        <>  
+            <AdminHeader />
             {!loggedTrue ? 
                 <div className="flex w-screen h-screen bodyGradient justify-center items-center">
                     <div className="flex flex-col items-center bg-semiwhite p-5 px-8 rounded-lg">

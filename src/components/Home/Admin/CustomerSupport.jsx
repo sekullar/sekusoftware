@@ -6,6 +6,8 @@ import Loading from "../tools/Loading"
 import { AdminContext } from "../Context/AdminContext"
 import { useNavigate } from "react-router-dom"
 import TelegramBot from "../tools/TelegramBot"
+import Modal from 'react-modal';
+import Close from "../../../images/close.svg"
 
 
 const CustomerSupport = () => {
@@ -14,11 +16,13 @@ const CustomerSupport = () => {
     const [data,setData] = useState([]);
     const [searchTerm,setSearchTerm] = useState("");
     const [loggedCheck,setLoggedCheck] = useState(false);
+    const [modalOpen,setModalOpen] = useState(false);
+    const [addUrl,setAddUrl] = useState("");
 
 
     const [user,setUser] = useState("");
     const [email,setEmail] = useState("");
-    const [password,setPassword] = useState("")
+    const [password,setPassword] = useState("");
 
     const cstsUrl = process.env.REACT_APP_CSTS_URL;
     const cstsApiKey = process.env.REACT_APP_CSTS_APIKEY;
@@ -28,6 +32,20 @@ const CustomerSupport = () => {
     const {loggedContext,setCustomerSupportSite,setToken} = useContext(AdminContext);
 
     const navigate = useNavigate();
+
+    const customStyles = {
+        content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+          overflow:"auto",
+          
+        },
+      };
+
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
@@ -62,7 +80,31 @@ const CustomerSupport = () => {
         }
     }
 
+    const siteAdd = async () => {
+        toast.loading("Yükleniyor...")
+        const {data,error} = await csts_supabase
+        .from("cs_sites")
+        .insert([
+            {
+                siteUrl: addUrl
+            }
+        ])
+        
+        if(error){
+            toast.dismiss();
+            console.error(error);
+            toast.error("Site URL'si eklenirken hata oluştu!");
+        }
+        else{
+            toast.dismiss();
+            setModalOpen(!modalOpen);
+            getSites();
+            toast.success("Site URL eklendi!")
+        }
+    }
+
     const getSites =  async () => {
+        setLoading(true);
         const {data,error} = await csts_supabase
         .from("cs_sites")
         .select("siteUrl")
@@ -94,18 +136,29 @@ const CustomerSupport = () => {
 
     return(
         <>  
+            <Modal isOpen={modalOpen} style={customStyles}>
+                <div className="flex justify-end">
+                    <img src={Close} className="w-[35px] cursor-pointer" alt="Close" onClick={() => setModalOpen(!modalOpen)} />
+                </div>
+                <div className="flex flex-col gap-5">
+                    <p className="inter-500 text-xl">Site adı:</p>
+                    <input type="text" value={addUrl} placeholder="Site adı" onChange={(e) => setAddUrl(e.target.value)} className="p-2 rounded-lg outline-0 border"/>
+                    <button className="bg-sky-500 hover:bg-sky-600 transition-all duration-300 px-4 py-2 rounded-lg inter-500 text-white" onClick={() => siteAdd(1)}>Ekle</button>
+                </div>
+            </Modal>
             {loading ? <Loading /> : 
                 <>
                     {loggedCheck ? 
                     <>
                         <AdminHeader />
-                        <div className="ms-4">
+                        <div className="ms-4 flex flex-col items-start">
                             <TelegramBot task="test"/>
+                            <button className="mt-4 bg-sky-500 hover:bg-sky-600 px-4 py-2 transition-all duration-300 rounded-lg inter-500 text-white outline-0" onClick={() => setModalOpen(!modalOpen)}>Site ekle</button>
                         </div>  
                         <div className="flex flex-col relative">
                             <p className="ms-5 inter-500 text-xl mt-4">Lütfen destek vermek istediğiniz siteyi seçin: </p> 
                             <input type="text" value={searchTerm} onChange={handleSearchChange} className="outline-0 border p-2 rounded-lg ms-4 w-[200px] my-5" placeholder="Site ara"/>
-                            <div className="flex items-center overflow-auto ms-4">
+                            <div className="flex items-center overflow-auto ms-4 gap-5">
                                 {filteredUsers && filteredUsers.map((site,key) => {
                                     return(
                                         <>

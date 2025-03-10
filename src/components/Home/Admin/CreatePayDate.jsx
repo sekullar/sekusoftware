@@ -10,6 +10,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format, isPast } from "date-fns";
 import { tr } from "date-fns/locale";
+import AdminHeader from "./AdminHeader";
 
 const CreatePayDate = () => {
 
@@ -19,6 +20,8 @@ const CreatePayDate = () => {
     const [modalOpen,setModalOpen] = useState(false);
     const navigate = useNavigate();
     const [detailModal,setDetailModal] = useState([]);
+    const [siteUrlFilter, setSiteUrlFilter] = useState("");
+
 
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedDate2, setSelectedDate2] = useState(null);
@@ -148,7 +151,7 @@ const CreatePayDate = () => {
     const filterSelectPayDate = async (data) => {
         let newData = [...data];
     
-        if (!filters.unpaid && !filters.dueToday && !filters.overdue) {
+        if (!filters.unpaid && !filters.dueToday && !filters.overdue && !siteUrlFilter) {
             setFilteredData(data);
             return;
         }
@@ -174,11 +177,19 @@ const CreatePayDate = () => {
             });
         }
     
+        if (siteUrlFilter) {
+            newData = newData.filter(item =>
+                item.siteUrl.toLowerCase().includes(siteUrlFilter.toLowerCase())
+            );
+        }
+    
         setFilteredData(newData);
         setLoading(false);
     };
     
-    
+    useEffect(() => {
+        filterSelectPayDate(data);
+    }, [siteUrlFilter]);    
     
     const formatTimestamp = (timestamp) => {
         const timestampNum = Number(timestamp); 
@@ -265,10 +276,9 @@ const CreatePayDate = () => {
         
         </Modal>
         {loading ? <Loading /> :
+        <>
+            <AdminHeader />
             <div className="flex flex-col h-screen w-full p-5 min-w-[1000px] overflow-auto">
-                <div className="flex justify-start">
-                    <button className="bg-sky-500 hover:bg-sky-600 transition-all duration-300 text-white inter-500 rounded-lg py-2 px-4 w-[160px] mb-6" onClick={() => navigate("/SekuSoftwareAdminPanel")}>Anasayfaya dön</button>
-                </div>
                 <p className="inter-600 text-2xl text-center">Listelenen ödemeler</p>
                 <div className="flex flex-col items-center my-4">
                    <div className="flex items-center gap-4">
@@ -276,6 +286,7 @@ const CreatePayDate = () => {
                         <p className="inter-500 text-lg bg-sky-500 hover:bg-sky-600 transition-all duration-300 px-4 py-2 text-white inter-600 rounded-lg cursor-pointer" onClick={() => filterSelectPayDate(data)}>Filtrele</p>
                    </div>
                     <div className="flex items-center gap-5 my-4 overflow-auto max-w-[835px] lg:max-w-none">
+                    <input type="text" placeholder="SiteURL filtrele" className="p-2 border outline-0 rounded-lg" value={siteUrlFilter} onChange={(e) => setSiteUrlFilter(e.target.value)}/>
                     {[
                         { key: "unpaid", label: "Ödeme yapmayanları listele" },
                         { key: "dueToday", label: "Ödemesi yaklaşanları listele" },
@@ -336,7 +347,7 @@ const CreatePayDate = () => {
                         )
                      })}
                 </div>
-            </div>
+            </div></>
         }
             
         </>

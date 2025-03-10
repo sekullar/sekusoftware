@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Loading from '../tools/Loading';
 import Modal from 'react-modal';
 import Close from "../../../images/close.svg"
+import AdminHeader from './AdminHeader';
 
 
 
@@ -89,6 +90,8 @@ const CheckSupport = () => {
         </Modal>
         {loading ?
              <Loading /> : 
+            <>
+            <AdminHeader />
             <div className="flex flex-col h-screen w-full items-center sm:justify-center sm:mt-0 mt-4">
                 <p className="inter-500 text-xl mb-8">Destek Biletleri</p>
                 <div className="flex flex-col max-w-[400px] w-[400px] justify-center max-h-[500px] overflow-auto">
@@ -101,7 +104,7 @@ const CheckSupport = () => {
                         )
                     })}
                 </div>
-            </div>}
+            </div> </>}
         </>
     )
 }

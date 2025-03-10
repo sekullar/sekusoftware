@@ -12,7 +12,7 @@ import MemorySite from "./components/Home/ServicesComponents/MemorySite"
 import PromotionSite from "./components/Home/ServicesComponents/PromotionSite"
 import Support from "./components/Home/MainComponents/Support";
 import ShopTerms from "./components/Home/MainComponents/ShopTerms";
-import { OffcanvasProvider, Trigger, Offcanvas } from 'react-simple-offcanvas'
+import { OffcanvasProvider } from 'react-simple-offcanvas'
 import AdminLogin from "./components/Home/Admin/AdminLogin";
 import { AdminProvider } from "./components/Home/Context/AdminContext";
 import SiteInfo from "./components/Home/Admin/SiteInfo";
@@ -21,6 +21,7 @@ import CheckSupport from "./components/Home/Admin/CheckSupport";
 import CreatePayDate from "./components/Home/Admin/CreatePayDate";
 import CustomerSupport from "./components/Home/Admin/CustomerSupport";
 import CustomerSupportDetail from "./components/Home/Admin/CustomerSupportDetail";
+import Orders from "./components/Home/Admin/Orders";
 
 
 
@@ -53,7 +54,7 @@ function App() {
                   <Route path="/SekuSoftwareAdminPanel/CreatePayDate" element={<CreatePayDate />} />
                   <Route path="/SekuSoftwareAdminPanel/CustomerSupport" element={<CustomerSupport />} />
                   <Route path="/SekuSoftwareAdminPanel/CustomerSupport/CustomerSupportDetail" element={<CustomerSupportDetail/>} />
-
+                  <Route path="/SekuSoftwareAdminPanel/Orders" element={<Orders />} />
               </Routes>
             </Router>
           </LanguageProvider> 

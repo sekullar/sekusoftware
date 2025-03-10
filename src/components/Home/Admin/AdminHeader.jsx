@@ -20,14 +20,17 @@ const AdminHeader = () => {
     return(
         <>
             <div className={`${offcanvas ? "opacity-100 w-full" : " opacity-0 w-[0px]"}  h-screen fixed transition-all duration-300 z-50 bg-semiblack-2`}>
-                <div className={`h-full w-1/4 bg-white flex flex-col fixed end-0 ${offcanvas ? "slideAni w-[full]" : "w-[0px]"}`}>
+                <div className={`h-full  bg-white flex flex-col fixed end-0 ${offcanvas ? "slideAni md:w-1/4 sm:w-1/2 w-full" : "w-[0px]"}`}>
                     <div className="flex justify-end my-4 me-4">
                         <img src={Close} className="w-[50px] cursor-pointer" onClick={() => setOffcanvas(!offcanvas)} alt="Close" />
                     </div>
                     <Accordion transition transitionTimeout={250} className="transition-all duration-300 select-none">
                         <AccordionItem className="w-full border p-3 outline-0" header="Yönetici Erişimi">
                                 <div className="flex flex-col outline-0" >
-                                    <a className="outline-0 inter-400 mt-3 text-xl"  >Ödeme tarihi ekle</a>
+                                    <p onClick={() => navigate("/SekuSoftwareAdminPanel/CreatePayDate")} className="outline-0 inter-400 mt-3 text-xl">Ödeme tarihi ekle</p>
+                                </div>
+                                <div className="flex flex-col outline-0" >
+                                    <p onClick={() => navigate("/SekuSoftwareAdminPanel/Orders")} className="outline-0 inter-400 mt-3 text-xl">Siparişler</p>
                                 </div>
                         </AccordionItem>
                         <AccordionItem  className="w-full border p-3 outline-0 transition-all" header="Site Yönetimi">
